@@ -10,16 +10,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blood Bank!"
-        android:textSize="50sp"
         android:layout_gravity="center"
+        android:text="Blood Bank!"
         android:textColor="@color/colorAccent"
-        />
+        android:textSize="50sp" />
     <Button
         android:id="@+id/btnDonor"
         android:layout_width="match_parent"
         android:layout_height="200sp"
-        android:layout_marginTop="70sp"
+        android:layout_marginTop="10sp"
         android:text="Donor"
         android:textSize="30sp"
         android:onClick="donorPlay"

@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="UserList"
+            android:text="DonorList"
             android:textColor="#123456"
             android:textSize="23sp"
             />
@@ -30,7 +30,7 @@
         android:textOn="Sorted By your address" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#000000"
+        android:background="#ffffff"
         android:layout_height="wrap_content">
 
         <ListView

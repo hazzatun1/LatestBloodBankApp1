@@ -1,75 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_background"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".DonorHome">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/logo" />
+    tools:context="DonorHome">
 
 
 
-
-    <EditText
-        android:id="@+id/amount"
-        android:layout_width="206dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="UserList"
+        android:textColor="#123456"
+        android:textSize="23sp"
+        />
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search by your blood group"
+        />
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="All"
+        android:textOn="Sorted By your address" />
+    <LinearLayout
+        android:layout_width="match_parent"
         android:background="#ffffff"
-        android:hint="How much u want?"
-        android:paddingLeft="2dp" />
+        android:layout_height="wrap_content">
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list1"/>
 
+    </LinearLayout>
 
-
-    <Button
-        android:id="@+id/demand"
-        android:layout_width="206dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:background="#04ea00"
-        android:text="Demand"
-        android:textColor="#ffffff"
-        android:onClick="dmPlay"/>
-    <TextView
-        android:layout_marginTop="10sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:textSize="40sp"
-        android:gravity="center"
-        android:textColor="@color/colorAccent"/>
-    <Button
-        android:id="@+id/free"
-        android:layout_width="206dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:background="#04ea00"
-        android:text="Free Donate"
-        android:textColor="#ffffff"
-        android:onClick="frPlay"/>
-
-    <TextView
-        android:layout_marginTop="10sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contacted Blood Seeker"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="@color/red"/>
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:cacheColorHint="#00000000"
-        android:divider="@drawable/list_divider"
-        android:id="@+id/donar_listview"/>
 
 </LinearLayout>

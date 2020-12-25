@@ -1,7 +1,10 @@
 package com.example.user.myapplication;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,52 +31,46 @@ public class DonorHome extends AppCompatActivity {
 
         db=new DatabaseHelper(this);
 
-        lv = (ListView) findViewById(R.id.donar_listview);
-        amount=(EditText) findViewById(R.id.amount);
-        demand=(Button) findViewById(R.id.demand);
-        free=(Button) findViewById(R.id.free);
-       ShowRecords(); //etar jonno login page ei break hocche. how can i show the user list to this page???
+        lv = (ListView) findViewById(R.id.list1);
+
+
+
+       ShowRecords();
     }
     private void ShowRecords(){
         final ArrayList<Contact> contacts = new ArrayList<>(db.getAllContacts());
         data=new CAdapter(getApplicationContext(), contacts);
 
         lv.setAdapter(data);
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                dataModel = contacts.get(position);
-
-                Toast.makeText(getApplicationContext(),String.valueOf(dataModel.getID()), Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> param1AdapterView, View param1View, int param1Int, long param1Long) {
+                AlertDialog.Builder builder = new AlertDialog.Builder((Context)DonorHome.this);
+                EditText editText = new EditText((Context)DonorHome.this);
+                builder.setTitle("Donate free or enter amount");
+                builder.setMessage("Enter demanded amount").setCancelable(false).setView((View)editText).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface param2DialogInterface, int param2Int) {
+                        DonorHome.this.updonate();
+                        param2DialogInterface.cancel();
+                    }
+                }).setNegativeButton("Free Donate", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface param2DialogInterface, int param2Int) {
+                        DonorHome.this.updonate();
+                        param2DialogInterface.cancel();
+                    }
+                }).setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface param2DialogInterface, int param2Int) {
+                        Toast.makeText((Context)DonorHome.this, "Cancel", 1).show();
+                        param2DialogInterface.cancel();
+                    }
+                });
+                builder.create().show();
             }
         });
     }
 
-    public void dmPlay(View view) {
-        String am = amount.getText().toString().trim();
-
-            long val=db.addBlood(am);
-        if(val > 0) {
-            Toast.makeText(DonorHome.this, "success", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(DonorHome.this,"Error",Toast.LENGTH_SHORT).show();
-        }
-    }
+    public void updonate() {
 
 
-    public void frPlay(View view) {
 
-        String am = String.valueOf(free);
-
-        long val=db.addBlood(am);
-        if(val > 0) {
-            Toast.makeText(DonorHome.this, "Success", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(DonorHome.this,"Error",Toast.LENGTH_SHORT).show();
-        }
     }
 }
